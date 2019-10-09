@@ -2,5 +2,13 @@
 Binaries/
 Intermediate/
 Saved/
+Game/
+Config/Ferret/
+Content/Collections/
+Content/Developers/
+Content/FirstPerson/
+Content/FirstPersonCPP/
+Content/Geometry/
+Content/StartContent/
 *.sln
 *.VC.db
