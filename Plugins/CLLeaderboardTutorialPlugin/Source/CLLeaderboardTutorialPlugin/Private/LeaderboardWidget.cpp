@@ -8,10 +8,10 @@
 
 void SLeaderboardWidget::Construct(const FArguments& InArgs)
 {
-	EntryTextStyle.SetFont(TEXT("Fonts/gorditas_regular.ttf"), 20);
+	EntryTextStyle.SetFont(FPaths::ProjectPluginsDir() / "CLLeaderboardTutorialPlugin/Content/Fonts/gorditas_regular.ttf", 20);
 	EntryTextStyle.SetColorAndOpacity(FLinearColor::White);
 	
-	TitleTextStyle.SetFont(TEXT("Fonts/njnaruto.ttf"), 60);
+	TitleTextStyle.SetFont(FPaths::ProjectPluginsDir() / "CLLeaderboardTutorialPlugin/Content/Fonts/njnaruto.ttf", 60);
 	TitleTextStyle.SetColorAndOpacity(FLinearColor::White);
 
 	ColumnBox = SNew(SHorizontalBox);

@@ -15,7 +15,7 @@ class SLeaderboardWidget : public SCompoundWidget
 		SLATE_ARGUMENT(UDataTable*, InLeaderboardDataTable)
 	SLATE_END_ARGS()
 
-	void Construct(const FArguments& InArgs);
+	void CLLEADERBOARDTUTORIALPLUGIN_API Construct(const FArguments& InArgs);
 
 	void AddWidget(TSharedPtr<SVerticalBox> VerticalBox, int32 Number);
 

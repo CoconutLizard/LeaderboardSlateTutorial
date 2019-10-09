@@ -9,5 +9,6 @@ public class DummyProjectEditorTarget : TargetRules
 	{
 		Type = TargetType.Editor;
 		ExtraModuleNames.Add("DummyProject");
+		ExtraModuleNames.Add("CLLeaderboardTutorialPlugin");
 	}
 }

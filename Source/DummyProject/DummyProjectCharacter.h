@@ -6,8 +6,8 @@
 #include "GameFramework/Character.h"
 // Leaderboard Tutorial
 #include "SlateBasics.h"
-#include "Leaderboard/LeaderboardItem.h"
-#include "Leaderboard/LeaderboardWidget.h"
+#include "LeaderboardItem.h"
+#include "LeaderboardWidget.h"
 // Leaderboard Tutorial End
 #include "DummyProjectCharacter.generated.h"
 

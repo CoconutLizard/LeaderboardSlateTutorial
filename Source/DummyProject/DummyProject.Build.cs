@@ -13,12 +13,13 @@ public class DummyProject : ModuleRules
 			"CoreUObject",
 			"Engine",
 			"InputCore",
-			"HeadMountedDisplay"
+			"HeadMountedDisplay",
+			"Slate",
+			"SlateCore"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {
-			"Slate",
-			"SlateCore"
+			"CLLeaderboardTutorialPlugin"
 		});
 	}
 }

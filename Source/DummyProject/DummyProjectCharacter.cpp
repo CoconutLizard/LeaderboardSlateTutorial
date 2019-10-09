@@ -13,7 +13,6 @@
 #include "XRMotionControllerBase.h" // for FXRMotionControllerBase::RightHandSourceId
 // Leaderboard Tutorial
 #include "Engine.h"
-#include "Leaderboard/LeaderboardStyle.h"
 // Leaderboard Tutorial End
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
@@ -90,7 +89,7 @@ ADummyProjectCharacter::ADummyProjectCharacter()
 	// Leaderboard Tutorial
 	bIsLeaderboardOpen = false;
 
-	static ConstructorHelpers::FObjectFinder<UDataTable> LeaderboardDataTable(TEXT("DataTable'/Game/Leaderboard.Leaderboard'"));
+	static ConstructorHelpers::FObjectFinder<UDataTable> LeaderboardDataTable(TEXT("DataTable'/CLLeaderboardTutorialPlugin/Leaderboard.Leaderboard'"));
 	if (LeaderboardDataTable.Succeeded())
 	{
 		LeaderboardDataTableObject = LeaderboardDataTable.Object;

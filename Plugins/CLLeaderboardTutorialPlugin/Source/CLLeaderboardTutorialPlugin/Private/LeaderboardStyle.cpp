@@ -10,7 +10,7 @@ TSharedPtr<ISlateStyle> FLeaderboardStyle::Get() { return StyleSet; }
 
 void FLeaderboardStyle::Initialize()
 {
-	static FString ContentDir = FPaths::ProjectContentDir();
+	static FString ContentDir = FPaths::ProjectPluginsDir() / "CLLeaderboardTutorialPlugin/Content";
 
 	// Only register once
 	if (StyleSet.IsValid())

@@ -9,5 +9,6 @@ public class DummyProjectTarget : TargetRules
 	{
 		Type = TargetType.Game;
 		ExtraModuleNames.Add("DummyProject");
+		ExtraModuleNames.Add("CLLeaderboardTutorialPlugin");
 	}
 }

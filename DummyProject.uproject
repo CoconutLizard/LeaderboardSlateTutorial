@@ -8,6 +8,11 @@
 			"Name": "DummyProject",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "CLLeaderboardTutorialPlugin",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
 		}
 	]
 }
