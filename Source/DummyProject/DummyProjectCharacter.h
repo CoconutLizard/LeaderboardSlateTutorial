@@ -4,9 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+// Leaderboard Tutorial
 #include "SlateBasics.h"
 #include "Leaderboard/LeaderboardItem.h"
 #include "Leaderboard/LeaderboardWidget.h"
+// Leaderboard Tutorial End
 #include "DummyProjectCharacter.generated.h"
 
 class UInputComponent;
@@ -97,11 +99,9 @@ protected:
 	/** Fires a projectile. */
 	void OnFire();
 
-	// Tutorial Functions
-
+	// Leaderboard Tutorial
 	void OnOpenLeaderboard();
-
-	// End of Tutorial Functions
+	// Leaderboard Tutorial End
 
 	/** Resets HMD orientation and position in VR. */
 	void OnResetVR();

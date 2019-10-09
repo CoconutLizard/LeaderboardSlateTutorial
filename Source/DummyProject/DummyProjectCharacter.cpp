@@ -11,8 +11,10 @@
 #include "Kismet/GameplayStatics.h"
 #include "MotionControllerComponent.h"
 #include "XRMotionControllerBase.h" // for FXRMotionControllerBase::RightHandSourceId
+// Leaderboard Tutorial
 #include "Engine.h"
 #include "Leaderboard/LeaderboardStyle.h"
+// Leaderboard Tutorial End
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 
@@ -85,6 +87,7 @@ ADummyProjectCharacter::ADummyProjectCharacter()
 	// Uncomment the following line to turn motion controllers on by default:
 	//bUsingMotionControllers = true;
 
+	// Leaderboard Tutorial
 	bIsLeaderboardOpen = false;
 
 	static ConstructorHelpers::FObjectFinder<UDataTable> LeaderboardDataTable(TEXT("DataTable'/Game/Leaderboard.Leaderboard'"));
@@ -92,6 +95,7 @@ ADummyProjectCharacter::ADummyProjectCharacter()
 	{
 		LeaderboardDataTableObject = LeaderboardDataTable.Object;
 	}
+	// Leaderboard Tutorial End
 }
 
 void ADummyProjectCharacter::BeginPlay()
@@ -114,24 +118,14 @@ void ADummyProjectCharacter::BeginPlay()
 		Mesh1P->SetHiddenInGame(false, true);
 	}
 
-	TSharedPtr<FLeaderboardItem> Item1 = MakeShared<FLeaderboardItem>(1, FName(TEXT("Leaderboard.Icon.USA")), TEXT("Tiger   Woods"), -13, 70, 68, 67, 70);
-	TSharedPtr<FLeaderboardItem> Item2 = MakeShared<FLeaderboardItem>(2, FName(TEXT("Leaderboard.Icon.USA")), TEXT("Dustin   Johnson"), -12, 68, 70, 70, 68);
-	TSharedPtr<FLeaderboardItem> Item3 = MakeShared<FLeaderboardItem>(3, FName(TEXT("Leaderboard.Icon.USA")), TEXT("Xander   Schauffele"), -12, 73, 65, 70, 68);
-	TSharedPtr<FLeaderboardItem> Item4 = MakeShared<FLeaderboardItem>(4, FName(TEXT("Leaderboard.Icon.USA")), TEXT("Brooks   Koepka"), -12, 66, 71, 69, 70);
-	TSharedPtr<FLeaderboardItem> Item5 = MakeShared<FLeaderboardItem>(5, FName(TEXT("Leaderboard.Icon.AUS")), TEXT("Jason   Day"), -11, 70, 67, 73, 67);
-	TSharedPtr<FLeaderboardItem> Item6 = MakeShared<FLeaderboardItem>(6, FName(TEXT("Leaderboard.Icon.USA")), TEXT("Webb   Simpson"), -11, 72, 71, 64, 70);
-	TSharedPtr<FLeaderboardItem> Item7 = MakeShared<FLeaderboardItem>(7, FName(TEXT("Leaderboard.Icon.USA")), TEXT("Tony   Finau"), -11, 71, 70, 64, 72);
-	TSharedPtr<FLeaderboardItem> Item8 = MakeShared<FLeaderboardItem>(8, FName(TEXT("Leaderboard.Icon.ITA")), TEXT("Francesco   Molinari"), -11, 70, 67, 66, 74);
-	TSharedPtr<FLeaderboardItem> Item9 = MakeShared<FLeaderboardItem>(9, FName(TEXT("Leaderboard.Icon.ESP")), TEXT("Jon   Rahm"), -10, 69, 70, 71, 68);
-	TSharedPtr<FLeaderboardItem> Item10 = MakeShared<FLeaderboardItem>(10, FName(TEXT("USA")), TEXT("Patrick   Cantlay"), -10, 73, 73, 64, 68);
-
-	LeaderboardItems = { Item1, Item2, Item3, Item4, Item5, Item6, Item7, Item8, Item9, Item10 };
-
-	LeaderboardWidget = SNew(SLeaderboardWidget)
+	// Leaderboard Tutorial
+	LeaderboardWidget =
+		SNew(SLeaderboardWidget)
 		.InLeaderboardDataTable(LeaderboardDataTableObject);
 
 	GEngine->GameViewport->AddViewportWidgetContent(LeaderboardWidget.ToSharedRef());
 	LeaderboardWidget->SetVisibility(EVisibility::Hidden);
+	// Leaderboard Tutorial End
 
 }
 
@@ -222,6 +216,7 @@ void ADummyProjectCharacter::OnFire()
 	}
 }
 
+// Leaderboard Tutorial
 void ADummyProjectCharacter::OnOpenLeaderboard()
 {
 	bIsLeaderboardOpen = !bIsLeaderboardOpen;
@@ -245,6 +240,7 @@ void ADummyProjectCharacter::OnOpenLeaderboard()
 		}
 	}
 }
+// Leaderboard Tutorial End
 
 void ADummyProjectCharacter::OnResetVR()
 {

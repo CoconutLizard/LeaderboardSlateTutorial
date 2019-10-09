@@ -1,0 +1,11 @@
+{
+	"FileVersion" : 3,
+	"Version" : 1,
+	"VersionName" : "1.0",
+	"FriendlyName" : "Coconut Lizard Leaderboard Tutorial",
+	"Description" : "Leaderboard Tutorial using Slate and C++",
+	"Category" : "Developer",
+	"CreatedBy" : "Coconut Lizard Ltd",
+	"CreatedByURL" : "http://coconutlizard.co.uk",
+	"CanContainContent" : true	
+}

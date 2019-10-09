@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "SlateBasics.h"
 #include "SCompoundWidget.h"
-#include "LeaderboardItem.h"
 #include "Engine/DataTable.h"
 
 class SLeaderboardWidget : public SCompoundWidget
@@ -13,7 +12,6 @@ class SLeaderboardWidget : public SCompoundWidget
 	SLATE_BEGIN_ARGS(SLeaderboardWidget)
 	{}
 	SLATE_DEFAULT_SLOT(FArguments, Content)
-		SLATE_ARGUMENT(TArray<TSharedPtr<FLeaderboardItem>>*, InLeaderboardItems)
 		SLATE_ARGUMENT(UDataTable*, InLeaderboardDataTable)
 	SLATE_END_ARGS()
 
@@ -25,15 +23,19 @@ class SLeaderboardWidget : public SCompoundWidget
 
 	void AddWidget(TSharedPtr<SVerticalBox> VerticalBox, const FName& IconName);
 
+	void InitHeaderWidgets();
+
 	void AddHeaderColumns();
 
 	void AddHeaderColumn(TSharedPtr<SVerticalBox> ColumnHeaderBox, float Size, const FText ColumnName);
 
-protected:
-	
+	void AddRows(UDataTable* LeaderboardDataTable);
 
+protected:
+	// Container for all Vertical Columns
 	TSharedPtr<SHorizontalBox> ColumnBox;
 
+	// Vertical Columns
 	TSharedPtr<SVerticalBox> Position;
 	TSharedPtr<SVerticalBox> Country;
 	TSharedPtr<SVerticalBox> PlayerName;
@@ -44,6 +46,9 @@ protected:
 	TSharedPtr<SVerticalBox> Round4;
 	TSharedPtr<SVerticalBox> TotalStrokes;
 
-	FTextBlockStyle EntryTextStyle;
+	// Leaderboard Title Text Style
 	FTextBlockStyle TitleTextStyle;
+
+	// Row/Column Text Style
+	FTextBlockStyle EntryTextStyle;
 };

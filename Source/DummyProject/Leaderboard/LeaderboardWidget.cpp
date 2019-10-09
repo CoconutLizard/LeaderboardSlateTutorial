@@ -1,6 +1,7 @@
 // Copyright (C) Coconut Lizard Limited. All rights reserved.
 
 #include "LeaderboardWidget.h"
+#include "LeaderboardItem.h"
 #include "LeaderboardStyle.h"
 
 #define LOCTEXT_NAMESPACE "SLeaderboardWidget"
@@ -13,7 +14,7 @@ void SLeaderboardWidget::Construct(const FArguments& InArgs)
 	TitleTextStyle.SetFont(TEXT("Fonts/njnaruto.ttf"), 60);
 	TitleTextStyle.SetColorAndOpacity(FLinearColor::White);
 
-	TSharedPtr<SVerticalBox> RowBox;
+	ColumnBox = SNew(SHorizontalBox);
 
 	const FText LeaderboardText = LOCTEXT("LeaderboardText", "Leaderboard");
 
@@ -81,12 +82,7 @@ void SLeaderboardWidget::Construct(const FArguments& InArgs)
 								.Padding(FMargin(10.0f, 5.0f))
 								.BorderImage(FLeaderboardStyle::Get()->GetBrush("Leaderboard.ForegroundBrush"))
 								[
-									SAssignNew(RowBox, SVerticalBox) // need this?
-									+ SVerticalBox::Slot()
-									.FillHeight(1.0f)
-									[
-										SAssignNew(ColumnBox, SHorizontalBox)
-									]
+									ColumnBox.ToSharedRef()
 								]
 							]
 						]
@@ -102,9 +98,19 @@ void SLeaderboardWidget::Construct(const FArguments& InArgs)
 				[
 					SNullWidget::NullWidget
 				]
-
 		];
 
+	InitHeaderWidgets();
+	AddHeaderColumns();
+
+	if (InArgs._InLeaderboardDataTable)
+	{
+		AddRows(InArgs._InLeaderboardDataTable);
+	}
+}
+
+void SLeaderboardWidget::InitHeaderWidgets()
+{
 	Position = SNew(SVerticalBox);
 	Country = SNew(SVerticalBox);
 	PlayerName = SNew(SVerticalBox);
@@ -114,33 +120,6 @@ void SLeaderboardWidget::Construct(const FArguments& InArgs)
 	Round3 = SNew(SVerticalBox);
 	Round4 = SNew(SVerticalBox);
 	TotalStrokes = SNew(SVerticalBox);
-
-	AddHeaderColumns();
-
-	const bool bIsImage = true;
-
-	const FString ContextString = FString(TEXT("Leaderboard Data Table Context"));
-
-	if (InArgs._InLeaderboardDataTable)
-	{
-		for (const FName& ColumName : InArgs._InLeaderboardDataTable->GetRowNames())
-		{
-			FLeaderboardItem* Item = InArgs._InLeaderboardDataTable->FindRow<FLeaderboardItem>(ColumName, ContextString);
-			if (Item)
-			{
-				Item->CalculateTotalStrokes();
-				AddWidget(Position, Item->Position);
-				AddWidget(Country, Item->Country);
-				AddWidget(PlayerName, Item->Name);
-				AddWidget(TotalScore, Item->TotalScore);
-				AddWidget(Round1, Item->Round1);
-				AddWidget(Round2, Item->Round2);
-				AddWidget(Round3, Item->Round3);
-				AddWidget(Round4, Item->Round4);
-				AddWidget(TotalStrokes, Item->TotalStrokes);
-			}
-		}
-	}
 }
 
 void SLeaderboardWidget::AddWidget(TSharedPtr<SVerticalBox> VerticalBox, int32 Number)
@@ -227,20 +206,45 @@ void SLeaderboardWidget::AddHeaderColumns()
 
 void SLeaderboardWidget::AddHeaderColumn(TSharedPtr<SVerticalBox> ColumnHeaderBox, float Size, const FText ColumnName)
 {
+	ColumnHeaderBox->AddSlot()
+		.FillHeight(0.1f)
+		.VAlign(VAlign_Center)
+		.HAlign(HAlign_Center)
+		[
+			SNew(STextBlock)
+			.TextStyle(&EntryTextStyle)
+			.Text(ColumnName)
+		];
+
 	ColumnBox->AddSlot()
 		.FillWidth(Size)
 		[
-			SAssignNew(ColumnHeaderBox, SVerticalBox)
-			+ SVerticalBox::Slot()
-			.FillHeight(0.1f)
-			.VAlign(VAlign_Center)
-			.HAlign(HAlign_Center)
-			[
-				SNew(STextBlock)
-				.TextStyle(&EntryTextStyle)
-				.Text(ColumnName)
-			]
+			ColumnHeaderBox.ToSharedRef()
 		];
+
+}
+
+void SLeaderboardWidget::AddRows(UDataTable* LeaderboardDataTable)
+{
+	const FString ContextString = FString(TEXT("Leaderboard Data Table Context"));
+
+	for (const FName& ColumName : LeaderboardDataTable->GetRowNames())
+	{
+		FLeaderboardItem* Item = LeaderboardDataTable->FindRow<FLeaderboardItem>(ColumName, ContextString);
+		if (Item)
+		{
+			Item->CalculateTotalStrokes();
+			AddWidget(Position, Item->Position);
+			AddWidget(Country, Item->Country);
+			AddWidget(PlayerName, Item->Name);
+			AddWidget(TotalScore, Item->TotalScore);
+			AddWidget(Round1, Item->Round1);
+			AddWidget(Round2, Item->Round2);
+			AddWidget(Round3, Item->Round3);
+			AddWidget(Round4, Item->Round4);
+			AddWidget(TotalStrokes, Item->TotalStrokes);
+		}
+	}
 }
 
 #undef LOCTEXT_NAMESPACE //SLeaderboardWidget
