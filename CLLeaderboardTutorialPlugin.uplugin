@@ -1,0 +1,20 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Coconut Lizard's Leaderboard Tutorial",
+	"Description": "Leaderboard Tutorial using Slate and C++",
+	"Category": "Leaderboard Tutorial",
+	"CreatedBy": "Coconut Lizard Ltd",
+	"CreatedByURL": "http://www.coconutlizard.co.uk",
+	"CanContainContent": true,
+	"EnabledByDefault": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "CLLeaderboardTutorialPlugin",
+			"Type": "Runtime"
+		}
+	]
+}
