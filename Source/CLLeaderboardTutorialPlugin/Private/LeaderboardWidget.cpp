@@ -8,10 +8,11 @@
 
 void SLeaderboardWidget::Construct(const FArguments& InArgs)
 {
-	EntryTextStyle.SetFont(FPaths::ProjectPluginsDir() / "CLLeaderboardTutorialPlugin/Content/Fonts/gorditas_regular.ttf", 20);
+	const FString ContentDir = FPaths::ProjectPluginsDir() / "CLLeaderboardTutorialPlugin/Content/";
+	EntryTextStyle.SetFont(ContentDir / "Fonts/gorditas_regular.ttf", 20);
 	EntryTextStyle.SetColorAndOpacity(FLinearColor::White);
 	
-	TitleTextStyle.SetFont(FPaths::ProjectPluginsDir() / "CLLeaderboardTutorialPlugin/Content/Fonts/njnaruto.ttf", 60);
+	TitleTextStyle.SetFont(ContentDir / "Fonts/njnaruto.ttf", 60);
 	TitleTextStyle.SetColorAndOpacity(FLinearColor::White);
 
 	ColumnBox = SNew(SHorizontalBox);
@@ -125,7 +126,7 @@ void SLeaderboardWidget::InitHeaderWidgets()
 void SLeaderboardWidget::AddWidget(TSharedPtr<SVerticalBox> VerticalBox, int32 Number)
 {
 	VerticalBox->AddSlot()
-		.FillHeight(0.1f)
+		.FillHeight(0.09f)
 		[
 			SNew(SOverlay)
 			+ SOverlay::Slot()
@@ -149,7 +150,7 @@ void SLeaderboardWidget::AddWidget(TSharedPtr<SVerticalBox> VerticalBox, int32 N
 void SLeaderboardWidget::AddWidget(TSharedPtr<SVerticalBox> VerticalBox, const FString& Name)
 {
 	VerticalBox->AddSlot()
-		.FillHeight(0.1f)
+		.FillHeight(0.09f)
 		[
 			SNew(SOverlay)
 			+ SOverlay::Slot()
@@ -172,7 +173,7 @@ void SLeaderboardWidget::AddWidget(TSharedPtr<SVerticalBox> VerticalBox, const F
 void SLeaderboardWidget::AddWidget(TSharedPtr<SVerticalBox> VerticalBox, const FName& IconName)
 {
 	VerticalBox->AddSlot()
-		.FillHeight(0.1f)
+		.FillHeight(0.09f)
 		[
 			SNew(SOverlay)
 			+ SOverlay::Slot()
@@ -207,7 +208,7 @@ void SLeaderboardWidget::AddHeaderColumns()
 void SLeaderboardWidget::AddHeaderColumn(TSharedPtr<SVerticalBox> ColumnHeaderBox, float Size, const FText ColumnName)
 {
 	ColumnHeaderBox->AddSlot()
-		.FillHeight(0.1f)
+		.FillHeight(0.09f)
 		.VAlign(VAlign_Center)
 		.HAlign(HAlign_Center)
 		[

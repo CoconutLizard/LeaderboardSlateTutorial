@@ -30,8 +30,6 @@ namespace UnrealBuildTool.Rules
 			PublicIncludePaths.AddRange(
 				new string[]
 				{
-					"D:/Git/UE4.22/DummyProject/Plugins/CLLeaderboardTutorialPlugin/Source/CLLeaderboardTutorialPlugin/Public"//,
-					//"CLLeaderboardTutorialPlugin/Public" //gives wrong path
 				});
 		}
 	}
