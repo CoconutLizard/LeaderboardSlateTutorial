@@ -1,12 +1,5 @@
 .vs
 Binaries/*
-Plugins/*/Binaries/*
 Intermediate/*
-Plugins/*/Intermediate/*
-DerivedDataCache/*
-Saved/*
-Game/
-Config/Ferret/
-Content/
 *.sln
 *.VC.db
